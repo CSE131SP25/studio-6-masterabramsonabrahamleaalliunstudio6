@@ -13,8 +13,14 @@ public class RecursiveMethods {
 	 */
 	public static double geometricSum(int n) {
 		
-			// FIXME compute the geometric sum for the first n terms recursively
+		//base case:
+		if(n == 0.0) {
 			return 0;
+		} else { // recursive
+			return geometricSum(n-1) + Math.pow(0.5, n);
+		}
+		
+			// FIXME compute the geometric sum for the first n terms recursively
 		
 	}
 
@@ -30,7 +36,19 @@ public class RecursiveMethods {
 	 */
 	public static void circlesUponCircles(double xCenter, double yCenter, double radius, double radiusMinimumDrawingThreshold) {
 		
-		// FIXME complete the recursive drawing
+		// base case:
+		if(radius < radiusMinimumDrawingThreshold) {
+			return;
+		}
+		// recursive:
+		else {
+		StdDraw.circle(xCenter, yCenter, radius);
+		circlesUponCircles(xCenter, yCenter + radius, radius/3.0, radiusMinimumDrawingThreshold); // start with top circle
+		circlesUponCircles(xCenter + radius, yCenter, radius/3.0, radiusMinimumDrawingThreshold); // right side
+		circlesUponCircles(xCenter, yCenter - radius, radius/3.0, radiusMinimumDrawingThreshold); // bottom
+		circlesUponCircles(xCenter - radius, yCenter, radius/3.0, radiusMinimumDrawingThreshold); // left side
+		}
+	
 	}
 	
 
@@ -43,9 +61,14 @@ public class RecursiveMethods {
 	public static int[] toReversed(int[] array) {
 		
 			// FIXME create a helper method that can recursively reverse the given array
+			// Helper method: holds more parameters
+			// which parameters? index, original array,
+		
 			return new int[0];
 		
 	}
+	
+	public static int[] toReversedHelper(int[] array, int index);
 
 	/**
 	 * This method uses recursion to compute the greatest common divisor
